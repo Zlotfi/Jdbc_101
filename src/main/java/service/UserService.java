@@ -8,10 +8,11 @@ import java.util.Scanner;
 
 public class UserService {
 
-    private final UserRepository userRepository = new UserRepository();
+    private final UserRepository userRepository;
     Scanner scanner = new Scanner(System.in);
 
-    public UserService() throws SQLException {
+    public UserService(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
     public void register(User user) throws SQLException {
