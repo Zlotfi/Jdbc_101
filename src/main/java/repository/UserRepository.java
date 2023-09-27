@@ -3,17 +3,17 @@ package repository;
 import connection.JdbcConnection;
 import model.User;
 
+import java.lang.ref.PhantomReference;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRepository {
+    private final Connection connection;
 
-    JdbcConnection jdbcConnection = new JdbcConnection();
-    Connection connection = jdbcConnection.getConnection();
-
-    public UserRepository() throws SQLException {
+    public UserRepository(Connection connection){
+        this.connection = connection;
     }
 
     public int save(User user) throws SQLException {
